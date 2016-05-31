@@ -17,10 +17,11 @@ A simple API for Arduino-based devices using flask, created for and with the Int
 git clone https://path.to.this.project.git
 ```
 
-* Install the requirements
+* Install the requirements (check that your install of python is in this path first. note that the second and third lines are optional)
 ```
 cd iot-api-flask
-OPTIONAL: activate virtual environment (something like source env/bin/activate)
+virtualenv -p /usr/local/bin/python3.4 env
+source env/bin/activate
 pip install -r requirements.txt
 ```
 
