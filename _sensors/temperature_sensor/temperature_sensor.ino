@@ -135,6 +135,7 @@ void loop(void) {
     client.println();
     client.print(myDataString);
     client.stop();
+    //TODO, listen for 200 response and get instructions from that response.
     Serial.println("data sent");
   }
 }
