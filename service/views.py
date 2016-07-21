@@ -75,5 +75,6 @@ def report():
 
 @app.route('/api/v1/command')
 def command():
+    # The idea here is to be able to send commands on the fly and adjust the behavior of a specific device
     # TODO: Add a form for manually instructions http://code.tutsplus.com/tutorials/intro-to-flask-adding-a-contact-page--net-28982
     return jsonify(**commands)
