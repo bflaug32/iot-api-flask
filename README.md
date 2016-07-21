@@ -1,5 +1,5 @@
 # iot-api-flask
-A simple API for Arduino-based devices using flask, created for and with the Internet Of Things Club at NextFab
+A simple API for Arduino-based devices using flask
 
 ##what's inside
 * A simple API for sending and recieving data
