@@ -1,6 +1,7 @@
 import time
 import json
 import pygal
+import random
 
 from datetime import datetime
 from werkzeug.wrappers import Response
@@ -39,13 +40,25 @@ def display(requested_data_name):
     for d in returned_data:
         display_data.append(float(d.decode('utf-8')))
 
+    #return most recent data
+    last_update_value = "N/A"
+    last_update_time = "N/A"
+    if len(returned_data) > 0:
+        last_update_value = returned_data[-1]
+        last_update_time = datetime.fromtimestamp(recorded_times[-1]).strftime('%Y-%m-%d %H:%M:%S')
+
     # format and return a line chart of the
     chart = pygal.Line(title=requested_data_name,width=800,height=400,explicit_size=True)
     chart.x_labels = [datetime.fromtimestamp(g).strftime('%Y-%m-%d %H:%M:%S') for g in recorded_times]
     chart.add(requested_data_name, display_data)
-    html = """<html><head><title>%s</title></head><body>%s</body></html>""" % (requested_data_name, chart.render())
+    html = u"<html><head><title>%s</title></head><p>Last Reading: %s on %s</p><body>%s</body></html>" % (requested_data_name, last_update_value, last_update_time, chart.render())
     return html
 
+@app.route('/populate')
+def populate():
+    for i in range(10):
+        history['temp'].set(time.time(), random.randint(70, 85))
+    return "Temps have been polulated"
 
 @app.route('/api/v1/report', methods=['POST'])
 def report():
