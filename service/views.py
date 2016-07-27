@@ -5,7 +5,7 @@ import random
 
 from datetime import datetime
 from werkzeug.wrappers import Response
-from flask import request, jsonify
+from flask import request, jsonify, render_template
 
 from service import app, instructions, commands, history
 from service.utils import populate_instructions
@@ -40,31 +40,34 @@ def display(requested_data_name):
     for d in returned_data:
         display_data.append(float(d.decode('utf-8')))
 
-    #return most recent data
+    # return most recent data
     last_update_value = "N/A"
     last_update_time = "N/A"
     if len(returned_data) > 0:
-        last_update_value = returned_data[-1]
+        last_update_value = int(returned_data[-1])
         last_update_time = datetime.fromtimestamp(recorded_times[-1]).strftime('%Y-%m-%d %H:%M:%S')
 
     # format and return a line chart of the
-    chart = pygal.Line(title=requested_data_name,width=800,height=400,explicit_size=True)
+    chart = pygal.Line(title=requested_data_name, width=800, height=400, explicit_size=True)
     chart.x_labels = [datetime.fromtimestamp(g).strftime('%Y-%m-%d %H:%M:%S') for g in recorded_times]
     chart.add(requested_data_name, display_data)
-    html = u"<html><head><title>%s</title></head><p>Last Reading: %s on %s</p><body>%s</body></html>" % (requested_data_name, last_update_value, last_update_time, chart.render())
-    return html
+    return render_template('display.html', requested_data_name=requested_data_name, last_update_value=last_update_value,
+                           last_update_time=last_update_time,chart_data=chart.render().decode('utf-8'))
 
+
+# TODO for testing
 @app.route('/populate')
 def populate():
     for i in range(10):
         history['temp'].set(time.time(), random.randint(70, 85))
     return "Temps have been polulated"
 
+
 @app.route('/api/v1/report', methods=['POST'])
 def report():
     """
     Gets sensor data and returns instructions (if any) think 'reporting for duty'
-    curl -H "Content-Type: application/json" -X POST -d '{"temp":72}' http://127.0.0.1:5000/api/v1/temp
+    curl -H "Content-Type: application/json" -X POST -d '{"temp":72}' http://127.0.0.1:5000/api/v1/report
     :return: instructions for the device, if any
     """
     try:

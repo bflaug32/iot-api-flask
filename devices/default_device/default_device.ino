@@ -1,9 +1,9 @@
-/*NYCDA & NextFab IoT Workshop
- * Web Connected Smart Light
- * by Matt Garfield
+/* 
+ * Web Connected Smart Device
+ * by Brad Flaugher (based on code by Matt Garfield)
  * 
  * Description:
- * Pull JSON Array of 10 JSON Objects containing "id" and "state" values from http://nycda-nextfab.herokuapp.com/datas 
+ * Pull JSON Array of 10 JSON Objects containing "id" and "state" values from your iot-api
  *    - Change color of LEDs based on latest value of "state"
  *    - Display rainbow if last 5 states match
  *    - Display white strobe if state = 0 ten times in a row
@@ -14,8 +14,10 @@
 const char* ssid = "NextFab";      //  your network SSID (case sensitive)
 const char* pass = "makeithere";   // your network password (case sensitive)
 
-const char* APIserver = "nycda-nextfab.herokuapp.com";  // server's address
-const char* APIresource = "/datas";
+const char* APIserver = "172.16.37.76";  // server's address
+const char* APIresource = "/api/v1/report"; // API endpoint
+#define PORT 5000 //port, 5000 is default for testing, 80 is default for web
+
 
 unsigned long APIcallWaitTime = 2000; // in ms; time to wait before next API call
 
@@ -168,7 +170,7 @@ void loop() {
        *  API Host  = server
       ********************/
           //if client successfully connects to server AND more than APIcallWaitTime seconds have passed OR it's the first run
-          if( APIclient.connect(APIserver, 80) && (( (millis() - APIcallTimer ) > APIcallWaitTime ) || firstRunFlag)){  
+          if( APIclient.connect(APIserver, PORT) && (( (millis() - APIcallTimer ) > APIcallWaitTime ) || firstRunFlag)){  
             
             APIcallTimer = millis();  //reset APIcallTimer
             
@@ -182,13 +184,25 @@ void loop() {
             }
             
             delay(500);
-        
+            
+            //create the data to send
+            String myDataString = "";
+            myDataString += "{\"temp\":";
+            //TODO make this a variable
+            myDataString += 80;
+            myDataString += "}";
+            Serial.println("connected to server");
+
             //Send request to resource
-            APIclient.print("GET ");
+            APIclient.print("POST ");
             APIclient.print(APIresource);
             APIclient.println(" HTTP/1.1");
             APIclient.print("Host: ");
             APIclient.println(APIserver);
+            APIclient.print("Content-Length: ");
+            APIclient.println(myDataString.length());
+            APIclient.println();
+            APIclient.print(myDataString);
             APIclient.println("Connection: close");
             APIclient.println();
         
