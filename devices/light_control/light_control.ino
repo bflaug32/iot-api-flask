@@ -5,8 +5,8 @@
 #include <WiFiUdp.h>
 #include <SPI.h>
 
-char ssid[] = "";        //  your network SSID (name)
-char pass[] = "";   // your network password
+char ssid[] = "NextFab";        //  your network SSID (name)
+char pass[] = "makeithere";   // your network password
 int keyIndex = 0;         // your network key Index number (needed only for WEP)
 int ledpin = 6;
 
@@ -65,23 +65,8 @@ void loop() {
             client.println();
 
             // the content of the HTTP response follows the header:
-            client.print("Click <a href=\"/1\">here</a> turn the LED on pin 9 on<br>");
-            client.print("Click <a href=\"/0\">here</a> turn the LED on pin 9 off<br>");
-
-            client.print("<hr>");
-
-            client.print("Click <a href=\"/Red\">here</a> turn R on<br>");
-            client.print("Click <a href=\"/Green\">here</a> turn G on<br>");
-            client.print("Click <a href=\"/Blue\">here</a> turn B on<br>");
-
-            client.print("<hr>");
-
-            client.print("Click <a href=\"/Movie\">here</a> turn on scene Movie<br>");
-            client.print("Click <a href=\"/Reading\">here</a> turn on scene Reading<br>");
-
-            client.print("<hr>");
-
-            client.print("Click <a href=\"/RESET\">here</a> RESET ALL<br>");
+            client.print("Click <a href=\"/1\">here</a> turn the light on on<br>");
+            client.print("Click <a href=\"/0\">here</a> turn the light off<br>");
 
             // The HTTP response ends with another blank line:
             client.println();
