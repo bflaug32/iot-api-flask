@@ -37,10 +37,12 @@ pip install -r requirements.txt
 python application.py
 ```
 
-##Mini-API Guide
-* `api/v1/display/<device-name>` will display a chart of reported data from a device
-* `api/v1/report` accepts JSON POSTs from IoT devices of data to report, sends back any instructions for the device
-* TODO `api/v1/command` allows you to set a command to send to a device the next time it calls `report`
+##Alarm Usage Guide
+* setup your config_local.py, set DEBUG = True
+* visit http://localhost:5000/api/v1/setalarm?h=12&m=0
+* then visit http://localhost:5000/api/v1/getalarm
+* note if you're using docker, you might not be able to access this from localhost
+
 
 ##Running the Example 'devices' Code
 * Open the code from the devices folder in the Arduino IDE
@@ -48,8 +50,22 @@ python application.py
 * You'll need to change WIFI credentials and server data, it's commented in the code
 * Please look to arduino IDE for libraries to install
 
+## Sample config_local.py (needs to be in the root of your project folder)
+```
+from config import BaseConfig
+
+
+class Config(BaseConfig):
+    DEBUG = False # make this true if you want to use fakeRedis
+    SECRET_KEY = 'sekret'
+    REDIS_HOST = 'myredis.cache.amazonaws.com'
+    REDIS_PORT = 6379
+
+```
+
 ## Contributors 
 * Marc Zucchelli
 * Anne Foster
 * Brad Flaugher
 * Ed Polk
+* Marni Duffy

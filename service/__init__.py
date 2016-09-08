@@ -1,33 +1,19 @@
-import fakeredis
+
+
 from flask import Flask
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
+# you need a config_local.py in the root folder for this to work
+app.config.from_object('config_local.Config')
 
 # add caches to save data about the state of each object
-history = {
-    'temp': fakeredis.FakeStrictRedis(0),
-    'light': fakeredis.FakeStrictRedis(1),
-    'mic': fakeredis.FakeStrictRedis(2),
-    'speaker': fakeredis.FakeStrictRedis(4),
-    'text': fakeredis.FakeStrictRedis(5),
-    'multi_light': fakeredis.FakeStrictRedis(5),
-}
-
-# instructions are the automated commands for each device
-instructions = {
-    'light': 'None',
-    'speaker': 'None',
-    'text': 'None',
-    'multi_light': 'None'
-}
-
-# commands are overrides to instructions, and are manually set by the user, and cleared when performed
-commands = {
-    'light': 'None',
-    'speaker': 'None',
-    'text': 'None',
-    'multi_light': 'None'
-}
+if app.config['DEBUG'] is True:
+    import fakeredis
+    commands = fakeredis.FakeStrictRedis(0)
+else:
+    import redis
+    _redis_host = app.config['REDIS_HOST']
+    _redis_port = app.config['REDIS_PORT']
+    commands = redis.StrictRedis(host=_redis_host, port=_redis_port, db=0)
 
 from service import views
