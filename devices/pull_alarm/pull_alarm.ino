@@ -23,7 +23,6 @@ const char* APIresource = "/api/v1/getalarm";                // JSON Page
 
 /* Libraries
 ********************/
-#include <ArduinoJson.h>    //https://github.com/bblanchon/ArduinoJson/wiki
 #include <WiFi101.h>        //https://www.arduino.cc/en/Reference/WiFi101
 
 /* Arduino Output Pins
@@ -108,16 +107,8 @@ void loop() {
             
             APIcallTimer = millis();  //reset APIcallTimer
             
-            //Flash Onboard LED indicator
-            ledPinTimer = millis();
-            while(millis() - ledPinTimer < 500){
-              digitalWrite(LED_PIN, LOW);
-              delay(50);
-              digitalWrite(LED_PIN, HIGH);
-              delay(50);  
-            }
-            
-            //delay(500);
+
+            delay(600);
         
             //Issue request for data from server
             //Uses HTTP commands "printed" as though they were being typed
@@ -165,34 +156,14 @@ void loop() {
                             // Search for '[' (ASCII = 91) if response will be JSON Array (or Array of Objects)
                       
                             if(int(APIresponse[0]) != 'O'){   //If the first character is not "123" (ASCII code for open bracket '{')
-                                Serial.println("Wrong start char detected");
-                                int index = 0;
-                                bool beginFound = false;
-                                while(!beginFound){       
-                                    if(int(APIresponse[index]) == 123){   // Step through the string until '{' is found
-                                        beginFound = true;
-                                        Serial.print("'{' found at ");
-                                        Serial.println(index);
-                                    }
-                                    index++;
-                                }   //When '{' is found, "index" will be it's position in the string
-                            }                            } 
+                                 digitalWrite(LED_PIN, HIGH);
+
+                            }                            
             } //End of API Response Processing
                 
             APIclient.stop(); // disconnect from server      
           
           } //End of API Host Server Connection
-    
-    Serial.print("** Uptime: ");
-    Serial.print(millis()/(1000*60*60*24));
-    Serial.print(" days, ");
-    Serial.print((millis()/(1000*60*60))%24);
-    Serial.print(" hrs, ");
-    Serial.print((millis()/(1000*60))%60);
-    Serial.print(" mins, ");
-    Serial.print((millis()/(1000))%60);
-    Serial.println(" secs");
-    Serial.println("");       //print blank line to space Serial Monitor read out
   
 } //END Loop
 
