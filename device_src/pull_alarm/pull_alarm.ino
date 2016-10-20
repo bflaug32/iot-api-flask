@@ -44,6 +44,9 @@ void loop() {
         APIclient.readBytes(APIresponse, API_RESPONSE_ARRAY_SIZE);
         digitalWrite(LED_PIN, HIGH);
     }
+    else{
+        digitalWrite(LED_PIN, LOW);
+    }
         
     APIclient.stop(); 
     delay(6000);
