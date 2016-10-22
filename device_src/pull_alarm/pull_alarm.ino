@@ -1,8 +1,8 @@
 /* User Settings
 *********************/ 
-const char* ssid = "NextFab";      //  your network SSID (case sensitive)
-const char* pass = "makeithere";   // your network password (case sensitive)
-const char* APIserver = "http://auwebservice00-env.us-east-1.elasticbeanstalk.com";
+const char* ssid = "NETWORKNAME";      //  your network SSID (case sensitive)
+const char* pass = "PASSWORD";   // your network password (case sensitive)
+const char* APIserver = "XXXXX.us-east-1.elasticbeanstalk.com";
 const char* APIresource = "/api/v1/getalarm";
 
 
@@ -30,29 +30,31 @@ void setup() {
 void loop() {
   if(client.connect(APIserver, 80)){  
 
-    APIclient.print("GET ");
-    APIclient.print(APIresource);
-    APIclient.println(" HTTP/1.1");
-    APIclient.print("Host: ");
-    APIclient.println(APIserver);
-    APIclient.println("Connection: close");
-    APIclient.println();
+    client.print("GET ");
+    client.print(APIresource);
+    client.println(" HTTP/1.1");
+    client.print("Host: ");
+    client.println(APIserver);
+    client.println("Connection: close");
+    client.println();
 
     delay(500);
 
-    if(APIclient.find("ON"){
-        APIclient.readBytes(APIresponse, API_RESPONSE_ARRAY_SIZE);
+    if(client.find("ON")){
+        Serial.println("ON");
         digitalWrite(LED_PIN, HIGH);
     }
     else{
+        Serial.println("OFF");
         digitalWrite(LED_PIN, LOW);
     }
         
-    APIclient.stop(); 
-    delay(6000);
+    client.stop(); 
+    delay(60000);
   
   }
   else{
+      Serial.println("RECONNECTING");
       connectWifi();
   }
   
