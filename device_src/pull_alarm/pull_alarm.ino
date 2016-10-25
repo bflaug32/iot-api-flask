@@ -1,8 +1,8 @@
 /* User Settings
 *********************/ 
-const char* ssid = "NETWORKNAME";      //  your network SSID (case sensitive)
-const char* pass = "PASSWORD";   // your network password (case sensitive)
-const char* APIserver = "XXXXX.us-east-1.elasticbeanstalk.com";
+const char* ssid = "networkname";      //  your network SSID (case sensitive)
+const char* pass = "password";   // your network password (case sensitive)
+const char* APIserver = "myapiname.awsregion.elasticbeanstalk.com";
 const char* APIresource = "/api/v1/getalarm";
 
 
@@ -22,7 +22,6 @@ WiFiClient client;
 void setup() {
     pinMode(LED_PIN, OUTPUT);
     Serial.begin(9600);
-    while(!Serial){} //wait for serial connection 
     connectWifi();
 }
 
@@ -54,7 +53,7 @@ void loop() {
   
   }
   else{
-      Serial.println("RECONNECTING");
+      Serial.println("Reconnecting");
       connectWifi();
   }
   
