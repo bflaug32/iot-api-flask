@@ -15,7 +15,8 @@ class UrlTest(unittest.TestCase):
         pass
 
     def test_set_and_get_alarm(self):
-        response = self.app.get('/api/v1/setalarm?h=2&m=10')
+        from service import app
+        response = self.app.get('/api/v1/setalarm?h=2&m=10&key=%s' % app.config['API_KEY'])
         self.assertEqual(response.status_code, 200)
         print(response)
         self.assertTrue('SUCCESS' in str(response.data))

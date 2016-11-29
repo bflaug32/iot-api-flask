@@ -57,9 +57,8 @@ from config import BaseConfig
 
 class Config(BaseConfig):
     DEBUG = False # make this true if you want to use fakeRedis
-    SECRET_KEY = 'sekret'
-    REDIS_HOST = 'myredis.cache.amazonaws.com'
-    REDIS_PORT = 6379
+    SECRET_KEY = 'sekret' # this is used for debug purposes
+    API_KEY = 'password'
 
 ```
 

@@ -2,35 +2,41 @@ import time
 import json
 
 from datetime import datetime
-from flask import request
+from flask import request, render_template
 
 from service import app, commands
 
 
 @app.route('/')
 def hello():
-    return "Welcome!"
+    return render_template('home.html'), 200
 
+@app.route('/favicon.ico')
+def favicon():
+    return b'', 204
 
 @app.route('/api/v1/setalarm', methods=['GET'])
 def set_alarm():
     # get the values from the query parameters. e.g. mysite.com/api/v1/set-alarm?h=6&m=30
     hour = request.args.get('h'),
     minute = request.args.get('m')
+    key = request.args.get('key')
 
-    # if hour and minute are numbers then save them to the cache
-    if hour and minute:
-        hour = hour[0]  # some strange tuple bug with flask
-        if hour.isdigit() and minute.isdigit():
-            hour = int(hour)
-            minute = int(minute)
-            if hour >= 0 and hour < 24 and minute >= 0 and minute < 60:
-                data_to_save = {
-                    'hour': hour,
-                    'minute': minute
-                }
-                commands.set('alarm', json.dumps(data_to_save))
-                return "SUCCESS: alarm set for %s:%s" % (hour, minute)
+    if key == app.config['API_KEY']:
+
+        # if hour and minute are numbers then save them to the cache
+        if hour and minute:
+            hour = hour[0]  # some strange tuple bug with flask
+            if hour.isdigit() and minute.isdigit():
+                hour = int(hour)
+                minute = int(minute)
+                if hour >= 0 and hour < 24 and minute >= 0 and minute < 60:
+                    data_to_save = {
+                        'hour': hour,
+                        'minute': minute
+                    }
+                    commands.set('alarm', json.dumps(data_to_save))
+                    return "SUCCESS: alarm set for %s:%s" % (hour, minute)
 
     return "error"
 
@@ -67,3 +73,4 @@ def get_alarm():
             current_hour, current_minute, alarm_start_hour, alarm_start_minute, alarm_end_hour, alarm_end_minute)
 
     return 'NOT SET'
+
