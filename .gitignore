@@ -3,4 +3,4 @@ env
 .idea
 .DS_Store
 _deploy
-
+config_local.py
