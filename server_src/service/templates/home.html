@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% if bfs is True %}
+{% if bfs %}
     <title>Bread Factory Studios</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="canonical" href="http://breadfactorystudios.com/">
@@ -30,33 +30,30 @@
     <p style="font-family: monospace">(•_•)>⌐■-■&nbsp;(⌐■_■)</p>
 {% endif %}
 
-
-{% if bfs is True %}
+{% if bfs %}
     <h2 style="font-family: monospace"><strong>bread_factory_team</strong></h2>
-{% else %}
-    <h2 style="font-family: monospace"><strong>contact_info</strong></h2>
-{% endif %}
-
-<h3 style="font-family: monospace">Brad Flaugher (<a href="https://github.com/bflaug32">GitHub</a>, <a href="https://www.linkedin.com/in/bradflaugher">LinkedIn</a>, <a href="mailto:bflaug32@gmail.com">mail</a>)</h3>
-
-{% if bfs is True %}
+    <h3 style="font-family: monospace">Brad Flaugher (<a href="https://github.com/bflaug32">GitHub</a> <a href="https://github.com/predbrad">2</a>, <a href="https://www.linkedin.com/in/bradflaugher">LinkedIn</a>, <a href="mailto:bflaug32@gmail.com">mail</a>)</h3>
     <h3 style="font-family: monospace">Scott Messer (<a href="https://github.com/SMesser55">GitHub</a>, <a href="https://www.linkedin.com/in/scott-messer">LinkedIn</a>, <a target="_blank" href="mailto:scott.messer55@gmail.com">mail</a>)</h3>
+
+{% else %}
+    <h2 style="font-family: monospace"><strong>welcome_to_Brad's_web_page</strong></h2>
+    <h3 style="font-family: monospace">contact Brad ---> (<a href="https://github.com/bflaug32">GitHub</a> <a href="https://github.com/predbrad">2</a>, <a href="https://www.linkedin.com/in/bradflaugher">LinkedIn</a>, <a href="mailto:bflaug32@gmail.com">mail</a>)</h3>
 {% endif %}
 
 <h2 style="font-family: monospace"><strong>work_in_progress</strong></h2>
 <h3 style="font-family: monospace">AuDigent (<a href="http://audigent.com/">homepage</a>)</h3>
 
-{% if bfs is True %}
+{% if bfs %}
     <h3 style="font-family: monospace">CueMe (<a target="_blank" href="http://cuemeapp.com/">homepage</a>, <a target="_blank" href="https://itunes.apple.com/us/app/cueme-guess-less/id1057047182?mt=8">iOS App Store</a>)</h3>
 {% endif %}
 
 <h3 style="font-family: monospace">IoT API (<a target="_blank" href="http://www.meetup.com/Philly-Makers/">meetup</a>, <a target="_blank" href="https://github.com/bflaug32/iot-api-flask">GitHub</a>)</h3>
-<h3 style="font-family: monospace">teaching (<a target="_blank" href="https://www.supersaas.com/schedule/NextFab_Studio/Classes">intro to Python and bootcamp</a>)</h3>
+<h3 style="font-family: monospace">teaching (<a target="_blank" href="https://www.supersaas.com/schedule/NextFab_Studio/Classes">Intro To Python, Connected Applicaitons Bootcamp @ NextFab</a>)</h3>
 <h2 style="font-family: monospace"><strong>old_projects</strong></h2>
 <h3 style="font-family: monospace">Imoji Keyboards (<a href="https://itunes.apple.com/ie/app/the-donald-keyboard/id1051561714?mt=8">iOS App Store</a>, <a href="http://time.com/4149938/donald-trump-keyboard-imoji-emoji/">hype</a>)</h3>
 <h3 style="font-family: monospace">6014 (<a target="_blank" href="https://itunes.apple.com/us/app/6014-space-shooter-future/id1017036097?mt=8">iOS App Store</a>,&nbsp;<a href="https://github.com/bflaug32/6014">GitHub</a>)</h3>
 
-{% if bfs is True %}
+{% if bfs %}
     <h3 style="font-family: monospace">save the penguin!(<a href="https://itunes.apple.com/bt/app/save-the-penguin-shark-attack/id1067171149?mt=8">iOS App Store</a>)</h3>
 {% endif %}
 
