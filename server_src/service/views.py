@@ -1,15 +1,21 @@
 import time
 import json
-
 from datetime import datetime
 from flask import request, render_template, url_for
-
+from werkzeug.routing import BaseConverter
 from service import app, commands
 
+class RegexConverter(BaseConverter):
+    def __init__(self, url_map, *items):
+        super(RegexConverter, self).__init__(url_map)
+        self.regex = items[0]
 
 @app.route('/')
+@app.route('/<regex("[A-Za-z0-9-_/.]{1,40}"):short_code>')
 def hello():
-    return render_template('home.html'), 200
+    if 'breadfactorystudios' in request.url:
+        return render_template('home.html',bfs=True), 200
+    return render_template('home.html',bfs=False), 200
 
 @app.route('/favicon.ico')
 def favicon():
