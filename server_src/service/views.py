@@ -14,7 +14,7 @@ app.url_map.converters['regex'] = RegexConverter
 
 @app.route('/')
 @app.route('/<regex("[A-Za-z0-9-_/.]{1,40}"):req>')
-def hello(req):
+def hello(req=""):
     if 'breadfactorystudios' in request.url:
         return render_template('home.html',bfs=True), 200
     return render_template('home.html',bfs=False), 200
