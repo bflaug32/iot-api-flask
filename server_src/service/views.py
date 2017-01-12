@@ -82,20 +82,18 @@ def get_alarm():
 
     return 'NOT SET'
 
-@app.route('/api/v1/setbasement', methods=['GET'])
+@app.route('/api/v1/settemp', methods=['GET'])
 def set_basement():
-    # get the values from the query parameters. e.g. mysite.com/api/v1/set-alarm?h=6&m=30
+    # get the values from the query parameters. e.g. mysite.com/api/v1/settemp?t=21&h=30
     temp = request.args.get('t'),
     humidity = request.args.get('h')
 
-    commands.set('basement', json.dumps({"temp":temp,"humidity":humidity}))
+    commands.set('temp', json.dumps({"temp":temp,"humidity":humidity}))
 
     return "OK"
 
-@app.route('/api/v1/getbasement', methods=['GET'])
+@app.route('/api/v1/gettemp', methods=['GET'])
 def get_basement():
     # get the values from the query parameters. e.g. mysite.com/api/v1/set-alarm?h=6&m=30
-    temp = request.args.get('t'),
-    humidity = request.args.get('h')
 
-    return json.dumps(commands.get('basement'))
+    return commands.get('temp')
