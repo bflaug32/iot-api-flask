@@ -90,7 +90,7 @@ def set_basement():
 
     commands.set('temp', json.dumps({"temp":temp,"humidity":humidity}))
 
-    return "OK"
+    return "TEMPOK"
 
 @app.route('/api/v1/gettemp', methods=['GET'])
 def get_basement():

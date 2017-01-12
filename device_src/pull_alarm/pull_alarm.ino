@@ -101,8 +101,8 @@ void loop() {
 
     delay(500);
 
-    if(client.find("OK")){
-        Serial.println("ON");
+    if(client.find("TEMPOK")){
+        Serial.println("TEMPERATURE POSTED SUCCESSFULLY!");
         digitalWrite(GREEN_PIN,HIGH);
         digitalWrite(RED_PIN,LOW);
     }
