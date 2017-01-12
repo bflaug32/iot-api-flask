@@ -1,8 +1,8 @@
 /* User Settings
 *********************/ 
-const char* ssid = "networkname";      //  your network SSID (case sensitive)
-const char* pass = "password";   // your network password (case sensitive)
-const char* APIserver = "myapiname.awsregion.elasticbeanstalk.com";
+const char* ssid = "FiOS-QZ1MU";      //  your network SSID (case sensitive)
+const char* pass = "zen84spacey69zoom";   // your network password (case sensitive)
+const char* APIserver = "bradflaugher.com";
 const char* APIresource = "/api/v1/getalarm";
 
 
