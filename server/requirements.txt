@@ -1,0 +1,9 @@
+Flask
+itsdangerous
+Jinja2
+MarkupSafe
+pygal
+pytz
+Werkzeug
+pymemcache
+requests
