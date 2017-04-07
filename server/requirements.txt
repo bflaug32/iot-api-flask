@@ -7,3 +7,4 @@ pytz
 Werkzeug
 pymemcache
 requests
+beautifulsoup4

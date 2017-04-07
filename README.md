@@ -1,5 +1,5 @@
-# fabbit-iot
-An end-to-end Internet Of Things (iot) solution for the Fabbit (an Arduino-based hardware development board by Matt Garfield @ https://nextfab.com/) also the MKR-1000 (Arduino's official and expensive wifi development board https://www.arduino.cc/en/Main/ArduinoMKR1000)
+# FabBit-IoT
+An end-to-end Internet Of Things (IoT) solution for the FabBit Micro (an Arduino-based hardware development board by Matt Garfield @ https://nextfab.com/) also the MKR-1000 (Arduino's official and expensive WiFi development board https://www.arduino.cc/en/Main/ArduinoMKR1000)
 
 ## What's inside? What does 'end-to-end' mean?
 * [A Server](./server/README.md) a lightweight server for sending and receiving data to get reports from or control your hardware
