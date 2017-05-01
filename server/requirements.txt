@@ -8,3 +8,5 @@ Werkzeug
 pymemcache
 requests
 beautifulsoup4
+colormap
+easydev

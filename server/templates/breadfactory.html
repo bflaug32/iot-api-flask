@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<title>Bread Factory Studios</title>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="canonical" href="http://breadfactorystudios.com/">
+<meta property="og:site_name" content="Bread Factory Studios">
+<meta property="og:url" content="http://breadfactorystudios.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:url" content="http://breadfactorystudios.com/">
+<meta name="twitter:card" content="summary">
+<meta name="description" content="">
+<p style="font-family: monospace">
+&nbsp;&nbsp;&nbsp;&nbsp;_______ <br>
+&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+&nbsp;&nbsp;/_____&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;(&nbsp;&nbsp;'&nbsp;&nbsp;&nbsp;)&nbsp;/ <br>
+&nbsp;&nbsp;|.&nbsp;&nbsp;'|&nbsp;/  <br>
+&nbsp;&nbsp;|____|/   <br>
+</p>
+
+<h2 style="font-family: monospace"><strong>team</strong></h2>
+
+<div style="font-family: monospace">
+    <a href="https://github.com/predbrad">Brad</a>- Backend, Big Data, DevOps, Linux, Android, Electronics (<a target="_blank" href="mailto:brad@breadfactorystudios.com">mail</a>)<br>
+    <a href="https://github.com/SMesser55">Scott</a>- iOS, Polygons, Windows, Backend (<a target="_blank" href="mailto:scott.messer55@gmail.com">mail</a>)<br>
+    <a href="https://www.instagram.com/emflaugh/">Elyse</a> - Mobile Web, OS X, Frontend, Design (<a target="_blank" href="mailto:elyseflaugher@gmail.com">mail</a>)<br>
+</div>
+
+<h2 style="font-family: monospace"><strong>what we do</strong></h2>
+<div style="font-family: monospace">
+    -We are a Fullstack development shop, working in every reasonable technology under the sun.<br>
+    -Sometimes we make big data and ad-tech products <a target="_blank" href="http://audigent.com/">like AuDigent</a>.<br>
+    -We make geolocation apps and websites for venues <a target="_blank" href="http://cuemeapp.com/">like CueMe</a> and <a target="_blank" href="http://www.startribune.com/redcurrent-app-aims-to-streamline-calendars/291898351/">RedCurrent</a>.<br>
+    -We have made <a target="_blank" href="http://venturebeat.com/2014/03/06/offline-magazine-opens-up-its-slick-ios-platform-to-publishers-starting-with-brooklyn-magazine/">publishing tools</a>.<br>
+    -Games are fun to make, so we do that. (<a target="_blank" href="https://itunes.apple.com/us/app/6014-space-shooter-future/id1017036097?mt=8">6014: Shooter of the Future</a>, <a target="_blank" href="https://itunes.apple.com/bt/app/save-the-penguin-shark-attack/id1067171149?mt=8">Save The Penguin</a>)<br>
+    -We once were featured in <a target="_blank" href="http://time.com/4149938/donald-trump-keyboard-imoji-emoji/">Time(r) Magazine</a> for making a Donald Trump keyboard, of all things.<br>
+    -We give back to the community by hosting <a target="_blank" href="http://www.meetup.com/Philly-Makers/">meetups</a> and contributing to <a target="_blank" href="https://github.com/predbrad/fabbit-iot">open source projects</a>.<br>
+</div>
+
+<h2 style="font-family: monospace"><strong>use the factory</strong></h2>
+<div style="font-family: monospace"> reach out to any of us via email (see above) or stalk us on LinkedIn and if we're free we'll try to help.</div>
+<br>
+
+{% for key, value in articles.items() %}
+<h1 style="font-family: monospace"><a target="_blank" href="{{value}}">{{key}} article of the week</a></h1>
+{% endfor %}
+
+</body></html>

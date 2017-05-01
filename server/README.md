@@ -8,6 +8,9 @@ where your data is saved, calculated, controlled, and sometimes viewed
 * run the docker app you just built `docker run -p 5000:5000 --name app fabbit-iot`
 * Visit the server at http://localhost:5000/
 
+* To close the app type `docker stop app`
+* if you want to rebuild with new code also run `docker rm app`
+
 ## Additional Notes
 * if `localhost` does not work, get the IP of your docker machine via the following command `docker-machine ip`
 * if you'd like to login to the terminal of the running docker instance use `docker exec -it app bash`

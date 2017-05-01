@@ -3,6 +3,7 @@ import time
 import json
 import requests
 
+from colormap import Color
 from datetime import datetime
 from bs4 import BeautifulSoup
 from werkzeug.routing import BaseConverter
@@ -44,11 +45,47 @@ app.url_map.converters['regex'] = RegexConverter
 @app.route('/<regex("[A-Za-z0-9-_/.]{1,40}"):req>')
 def hello(req=""):
     if 'breadfactorystudios' in request.url:
-        return render_template('home.html',bfs=True), 200
+        return render_template('breadfactory.html',articles={} if not cache.get('articles') else json.loads(cache.get('articles'))), 200
     elif 'fabbit' in request.url:
         return render_template('fabbit.html'), 200
-    return render_template('home.html',bfs=False), 200
+    return render_template('bradflaugher.html'), 200
 
+##########################################################
+#   COLOR PICKER
+#   see http://jscolor.com/examples/
+#   also https://github.com/spik3r/simpleFlaskForm/blob/master/basic_example.py
+##########################################################
+@app.route('/api/v1/picker',methods=['GET','POST'])
+def picker():
+    if request.method == 'POST':
+        color = request.form.get("color")
+        color_object = Color('#'+color)
+        h,s,v = color_object.hsv
+        cache.set('color',json.dumps({"h":round(h,4),"s":round(s,4),"v":round(v,4)}))
+        return "Check the light, the color you set was H:%s S:%s V:%s" % (h,s,v)
+    return render_template('picker.html') 
+
+@app.route('/api/v1/getcolor')
+def color():
+    color = cache.get('color')
+    
+    if color:
+        return color.decode('utf-8')
+
+    return 'NOT SET... go to /api/v1/picker to set'
+
+##########################################################
+#   DYNAMIC WEB CONTENT 
+#   used for setting dynamic content on breadfactory site 
+##########################################################
+@app.route('/api/v1/articles', methods=['POST'])
+def add_articles():
+    key = request.args.get('key')
+    
+    if key == api_key:
+        cache.set('articles',json.dumps(request.get_json()))
+        return 'OK'
+    return 'NOPE'
 
 ##########################################################
 #   WEATHER FORECAST
