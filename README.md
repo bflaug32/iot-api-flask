@@ -13,7 +13,6 @@ An end-to-end Internet Of Things (IoT) solution for the FabBit Micro (an Arduino
 * Containerization: [Docker](https://docs.docker.com/engine/userguide/)
 * Bash: [bash](http://tldp.org/LDP/Bash-Beginners-Guide/html/)
 * Web Charts [C3.js](http://c3js.org/)
-* Android App: [Kotlin](http://kotlinlang.org/docs/tutorials/kotlin-android.html)
 
 ## If you get stuck...
 * [come to the Electro-Makers open workshop](https://www.meetup.com/Philly-Makers/), we'll help you
