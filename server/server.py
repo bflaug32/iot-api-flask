@@ -56,14 +56,19 @@ def hello(req=""):
 #   also https://github.com/spik3r/simpleFlaskForm/blob/master/basic_example.py
 ##########################################################
 @app.route('/api/v1/picker',methods=['GET','POST'])
+@app.route('/picker',methods=['GET','POST'])
 def picker():
+    confirmation_text=""
     if request.method == 'POST':
         color = request.form.get("color")
         color_object = Color('#'+color)
-        h,s,v = color_object.hsv
-        cache.set('color',json.dumps({"h":round(h,4),"s":round(s,4),"v":round(v,4)}))
-        return "Check the light, the color you set was H:%s S:%s V:%s" % (h,s,v)
-    return render_template('picker.html') 
+        r,g,b = color_object.rgb
+        r=int(round(r*255,0))
+        g=int(round(g*255,0))
+        b=int(round(b*255,0))
+        cache.set('color',json.dumps({"r":r,"g":g,"b":b}))
+        confirmation_text = "Success! Color was set as R:%s G:%s B:%s" % (r,g,b)
+    return render_template('picker.html',confirmation_text=confirmation_text) 
 
 @app.route('/api/v1/getcolor')
 def color():

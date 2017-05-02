@@ -1,5 +1,5 @@
 # install docker first! https://docs.docker.com/engine/installation/
-sudo service docker start
+#sudo service docker start
 
 #build, name, and run docker image
 sudo docker build -t fabbit-iot .
