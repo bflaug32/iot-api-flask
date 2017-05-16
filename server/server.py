@@ -80,17 +80,33 @@ def color():
     return 'NOT SET... go to /api/v1/picker to set'
 
 ##########################################################
-#   DYNAMIC WEB CONTENT 
+#   DYNAMIC CONTENT FORM 
 #   used for setting dynamic content on breadfactory site 
 ##########################################################
-@app.route('/api/v1/articles', methods=['POST'])
-def add_articles():
-    key = request.args.get('key')
-    
-    if key == api_key:
-        cache.set('articles',json.dumps(request.get_json()))
-        return 'OK'
-    return 'NOPE'
+
+@app.route('/api/v1/articles',methods=['GET','POST'])
+def articles():
+    confirmation_text=""
+    if request.method == 'POST':
+        key = request.form.get('key')
+        confirmation_text='Fail'
+        if key == api_key:
+            articles_dict = {
+                "Linux":request.form.get('linux'),
+                "Cloud Computing":request.form.get('cc'),
+                "Machine Learning":request.form.get('ml'),
+                "Python":request.form.get('python'),
+                "Javascript":request.form.get('javascript'),
+                "Arduino":request.form.get('arduino'),
+                "Go":request.form.get('go'),
+                "C and C++":request.form.get('cpp'),
+                "Android and Java":request.form.get('android'),
+                "Virtual Teams":request.form.get('teams')
+            }
+            confirmation_text='Success'
+            cache.set('articles',json.dumps(articles_dict))
+    return render_template('articles.html',confirmation_text=confirmation_text) 
+
 
 ##########################################################
 #   WEATHER FORECAST
