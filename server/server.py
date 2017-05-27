@@ -92,7 +92,7 @@ def articles():
         confirmation_text='Fail'
         if key == api_key:
             articles_dict = {
-                "Linux":request.form.get('linux'),
+                "Linux and Unix":request.form.get('linux'),
                 "Cloud Computing":request.form.get('cc'),
                 "Machine Learning":request.form.get('ml'),
                 "Python":request.form.get('python'),
@@ -100,8 +100,8 @@ def articles():
                 "Arduino":request.form.get('arduino'),
                 "Go":request.form.get('go'),
                 "C and C++":request.form.get('cpp'),
-                "Android and Java":request.form.get('android'),
-                "Virtual Teams":request.form.get('teams')
+                "Android and Kotlin":request.form.get('android'),
+                "iOS and Swift":request.form.get('swift')
             }
             confirmation_text='Success'
             cache.set('articles',json.dumps(articles_dict))
