@@ -45,10 +45,13 @@ app.url_map.converters['regex'] = RegexConverter
 @app.route('/<regex("[A-Za-z0-9-_/.]{1,40}"):req>')
 def hello(req=""):
     if 'breadfactorystudios' in request.url:
-        return render_template('breadfactory.html',articles={} if not cache.get('articles') else json.loads(cache.get('articles'))), 200
+        return render_template('breadfactory.html'), 200
+    elif 'learn' in request.url:
+        return render_template('learn.html'), 200
     elif 'fabbit' in request.url:
         return render_template('fabbit.html'), 200
     return render_template('bradflaugher.html'), 200
+
 
 ##########################################################
 #   COLOR PICKER
@@ -78,35 +81,6 @@ def color():
         return color.decode('utf-8')
 
     return 'NOT SET... go to /api/v1/picker to set'
-
-##########################################################
-#   DYNAMIC CONTENT FORM 
-#   used for setting dynamic content on breadfactory site 
-##########################################################
-
-@app.route('/api/v1/articles',methods=['GET','POST'])
-def articles():
-    confirmation_text=""
-    if request.method == 'POST':
-        key = request.form.get('key')
-        confirmation_text='Fail'
-        if key == api_key:
-            articles_dict = {
-                "Linux and Unix":request.form.get('linux'),
-                "Cloud Computing":request.form.get('cc'),
-                "Machine Learning":request.form.get('ml'),
-                "Python":request.form.get('python'),
-                "Javascript":request.form.get('javascript'),
-                "Arduino":request.form.get('arduino'),
-                "Go":request.form.get('go'),
-                "C and C++":request.form.get('cpp'),
-                "Android and Kotlin":request.form.get('android'),
-                "iOS and Swift":request.form.get('swift')
-            }
-            confirmation_text='Success'
-            cache.set('articles',json.dumps(articles_dict))
-    return render_template('articles.html',confirmation_text=confirmation_text) 
-
 
 ##########################################################
 #   WEATHER FORECAST
@@ -263,75 +237,9 @@ def get_mlb_standings():
 
     return json.dumps(return_dictionary)
 
-
-##########################################################
-#   LIGHT ALARM
-#   for setting and controlling a light-based alarm
-##########################################################
-@app.route('/api/v1/setalarm', methods=['GET'])
-def set_alarm():
-    # Set the alarm via query params h and m, as well as a secret key
-    # get the values from the query parameters. e.g. mysite.com/api/v1/set-alarm?h=6&m=30&key=secret
-    hour = request.args.get('h'),
-    minute = request.args.get('m')
-    key = request.args.get('key')
-
-    if key == api_key:
-
-        # if hour and minute are numbers then save them to the cache
-        if hour and minute:
-            hour = hour[0]  # some strange tuple bug with flask
-            if hour.isdigit() and minute.isdigit():
-                hour = int(hour)
-                minute = int(minute)
-                if hour >= 0 and hour < 24 and minute >= 0 and minute < 60:
-                    data_to_save = {
-                        'hour': hour,
-                        'minute': minute
-                    }
-                    cache.set('alarm', json.dumps(data_to_save))
-                    return "SUCCESS: alarm set for %s:%s" % (hour, minute)
-
-    return "error"
-
-# Get the status of the alarm (called from something like an arduino)
-@app.route('/api/v1/getalarm')
-def get_alarm():
-    saved_time = cache.get('alarm')
-
-    if saved_time:
-        # decode and parse the json from the cache, if there's any available
-        saved_time_dict = json.loads(saved_time.decode('utf-8'))
-        alarm_start_hour = int(saved_time_dict['hour'])
-        alarm_start_minute = int(saved_time_dict['minute'])
-
-        # we want the alarm to be on for 30 minutes
-        if alarm_start_minute >= 30:
-            alarm_end_hour = alarm_start_hour + 1
-            alarm_end_minute = (alarm_start_minute + 30) % 60
-        else:
-            alarm_end_hour = alarm_start_hour
-            alarm_end_minute = alarm_start_minute + 30
-
-        # get the current hour and minute
-        current_hour = int(datetime.now().strftime('%H'))
-        current_minute = int(datetime.now().strftime('%M'))
-
-        current_time_in_minutes = current_hour * 60 + current_minute
-        alarm_start_in_minutes = alarm_start_hour * 60 + alarm_start_minute
-        alarm_end_in_minutes = alarm_end_hour * 60 + alarm_end_minute
-        if alarm_start_in_minutes <= current_time_in_minutes <= alarm_end_in_minutes:
-            return 'ON'
-
-        return "time is %d:%d alarm starts at %d:%d and ends at %d:%d" % (
-            current_hour, current_minute, alarm_start_hour, alarm_start_minute, alarm_end_hour, alarm_end_minute)
-
-    return 'NOT SET'
-
-
 ##########################################################
 #   TEMPERATURE SENSOR
-#   for setting and controlling a light-based alarm
+#   old code, for deomonstration purposes
 ##########################################################
 @app.route('/api/v1/settemp', methods=['GET'])
 def set_temperature():

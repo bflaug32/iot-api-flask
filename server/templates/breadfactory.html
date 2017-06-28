@@ -45,14 +45,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" style="font-family:monospace" href="#">bread factory studios</a>
+          <a class="navbar-brand" style="font-family:monospace" href="http://breadfactorystudios.com">bread factory studios</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#team" style="font-family: monospace"><span class="glyphicon glyphicon-user white"></span> TEAM</a></li>
-            <li><a href="#work" style="font-family: monospace"><span class="glyphicon glyphicon-briefcase white"></span> OUR WORK</a></li>
-            <li><a href="#hire" style="font-family: monospace"><span class="glyphicon glyphicon-phone-alt white"></span> HIRE US</a></li>
-            <li><a href="#learn" style="font-family: monospace"><span class="glyphicon glyphicon-book white"></span> LEARN FROM US</a></li>
+            <li><a href="http://breadfactorystudios.com/" style="font-family: monospace"><span class="glyphicon glyphicon-briefcase white"></span> HIRE US</a></li>
+            <li><a href="http://breadfactorystudios.com/learn" style="font-family: monospace"><span class="glyphicon glyphicon-book white"></span> LEARN FROM US</a></li>
               </ul>
             </li>
           </ul>
@@ -65,14 +63,37 @@
     }
     </style>
 
+
+
     <!--Team -->
     <div id="team" class="container text-center">
         <h2 style="font-family: monospace"><strong>team</strong></h2>
 
-        <div style="font-family: monospace">
-            <a href="https://github.com/predbrad">Brad</a>- Backend, Big Data, DevOps, Linux, Android, Electronics (<a target="_blank" href="mailto:brad@breadfactorystudios.com">mail</a>)<br>
-            <a href="https://github.com/SMesser55">Scott</a>- iOS, Polygons, Windows, Backend (<a target="_blank" href="mailto:scott.messer55@gmail.com">mail</a>)<br>
-            <a href="https://www.instagram.com/emflaugh/">Elyse</a> - Mobile Web, OS X, Frontend, Design (<a target="_blank" href="mailto:elyseflaugher@gmail.com">mail</a>)<br>
+        <div class="row">
+            <div class="col-sm-4">
+              <h4 style="font-family: monospace"><strong>Brad</strong></h4>
+              <img src="{{ url_for('static', filename='Brad.png') }}" class="img-circle person" alt="Brad" width="255" height="255">
+              <div style="font-family: monospace" >
+                <p>Backend, Big Data, DevOps, Linux, Android, Electronics</p>
+                  <p><a href="https://github.com/predbrad">Github</a>, <a href="https://www.linkedin.com/in/bradflaugher/">LinkedIn</a>, <a href="https://angel.co/brad-flaugher">Angel List</a>, <a target="_blank" href="mailto:brad@breadfactorystudios.com">email</a></p>
+               </div>
+            </div>
+            <div class="col-sm-4">
+                <h4 style="font-family: monospace"><strong>Elyse</strong></h4>
+                <img src="{{ url_for('static', filename='Elyse.png') }}" class="img-circle person" alt="Elyse" width="255" height="255">
+                <div style="font-family: monospace" >
+                    <p>Mobile Web, Frontend, Design</p>
+                    <p><a href="https://github.com/emflaugh">Github</a>, <a href="https://www.linkedin.com/in/elyse-flaugher-0816ba83/">LinkedIn</a>, <a target="_blank" href="mailto:elyseflaugher@gmail.com">email</a></p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h4 style="font-family: monospace"><strong>Scott</strong></h4>
+                <img src="{{ url_for('static', filename='Scott.png') }}" class="img-circle person" alt="Scott" width="255" height="255">
+                <div style="font-family: monospace" >
+                    <p>iOS, Android, Geo, Polygons, Mobile Backend</p>
+                    <p><a href="https://github.com/SMesser55">Github</a>, <a href="https://www.linkedin.com/in/scott-messer/">LinkedIn</a>, <a target="_blank" href="mailto:scott.messer55@gmail.com">email</a></p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -91,7 +112,7 @@
               </div>
               <div class="col-sm-6">
                 <h3>we get press for goofy apps</h3>
-                <a target="_blank" href="https://github.com/predbrad/ios-space-shooter">6014</a>, <a target="_blank" href="https://itunes.apple.com/bt/app/save-the-penguin-shark-attack/id1067171149?mt=8">Save The Penguin</a>, <a target="_blank" href="http://time.com/4149938/donald-trump-keyboard-imoji-emoji/">Imoji Keyboards</a><br>
+                like <a target="_blank" href="http://time.com/4149938/donald-trump-keyboard-imoji-emoji/">Imoji Keyboards</a> but also <a target="_blank" href="https://github.com/predbrad/ios-space-shooter">6014</a>, <a target="_blank" href="https://itunes.apple.com/bt/app/save-the-penguin-shark-attack/id1067171149?mt=8">Save The Penguin</a>
               </div>
               <div class="col-sm-6">
                 <h3>we contribute</h3>
@@ -103,33 +124,11 @@
         
     <!--Hire-->
     <div id="hire" class="container text-center">
-        <h2 style="font-family: monospace"><strong>use the factory</strong></h2>
+        <h2 style="font-family: monospace"><strong>hire us</strong></h2>
         <div style="font-family: monospace">
-            <a target="_blank" href="mailto:brad@breadfactorystudios.com">E-mail</a> us with the following info:<br>
-            1. Who are you?<br>
-            2. What is your project?<br>
-            3. How much $$ do you have to burn?  If you're not paying, how many magic beans will you give us?<br>
-            4. How many purple Lamborghinis do you think we'll be able to buy after a successful launch?<br>
-            5. How can we conctact you?<br>
-            6. Please be polite and end your emails with a nice "Have a nice day!" that always helps.<br>
+            email <a target="_blank" href="mailto:brad@breadfactorystudios.com">brad@breadfactorystudios.com</a> and we'll see what we can do.
         </div>
         <br>
-    </div>
-
-    <!--Learn-->
-    <div id="learn" class="container text-center">
-        <h2 style="font-family: monospace"><strong>let us teach you! (maybe we'll hire you)</strong></h2>
-        
-        <a style="font-family: monospace" href="https://nextfab.com/classes/"><h3>check out our classes at NextFab</h3></a>
-
-        <h3 style="font-family: monospace">BREAD FACTORY CENTER FOR KIDS WHO CAN'T PROGRAM GOOD</h3>
-        <h4 style="font-family: monospace">AND WHO WANNA LEARN TO DO OTHER STUFF GOOD TOO</h4>
-        <div style="font-family: monospace">Want to get in the biz? Have no skills and no Job? We might be able to help <a tagrget="_blank" href="mailto:brad@breadfactorystudios.com">Email us</a> and tell us your story, we'll see what we can do"</div>
-
-        <h3 style="font-family: monospace">Articles of the note</h3>
-        {% for key, value in articles.items() %}
-        <div style="font-family: monospace"><a target="_blank" href="{{value}}">{{key}} article of the week</a></div>
-        {% endfor %}
     </div>
 
 </body>
