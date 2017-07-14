@@ -228,7 +228,7 @@ def get_mlb_standings():
                 return_dictionary = {
                     "W":tds[w_index].getText().strip(),
                     "L":tds[l_index].getText().strip(),
-                    "GB":tds[gb_index].getText().strip(),
+                    "GB":tds[gb_index].getText().strip().replace(u'\u00bd','.5'),
                     "STRK":tds[strk_index].getText().strip()
                     }
 
