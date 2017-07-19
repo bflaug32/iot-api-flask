@@ -257,8 +257,38 @@ def set_temperature():
 def get_temperature():
     # get the values from the query parameters. e.g. mysite.com/api/v1/set-alarm?h=6&m=30
     return cache.get('temp')
-
-
+    
+##########################################################
+#   FIGHT ODDS
+########################################################## 
+@app.route('/api/v1/getodds', methods=['GET'])
+def get_odds():
+    saved_odds = cache.get('odds')
+    
+    if saved_odds:
+        return saved_odds.decode('utf-8')
+        
+    return_dictionary = {
+        "A":"",
+        "B": ""
+        }
+        
+    user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
+    source_url = 'http://www.oddsshark.com/boxing/floyd-mayweather-vs-conor-mcgregor-boxing-betting-odds'
+    response = requests.get(source_url, timeout=10, headers={
+        'User-agent': user_agent})
+    doc = BeautifulSoup(response.text,'html.parser')
+    
+    for ultag in doc.find_all('ul', {'class': 'content-list'}):
+    	return_dictionary = {
+            "A":ultag.find_all('li')[0].text,
+            "B":ultag.find_all('li')[1].text
+            }    
+            
+    # set cache for an hour
+    cache.set('odds',json.dumps(return_dictionary),600)
+    
+    return json.dumps(return_dictionary)
 ##########################################################
 #   MAIN
 #   don't edit this unless you know what you're doing :)
