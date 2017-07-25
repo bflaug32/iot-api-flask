@@ -46,6 +46,8 @@ app.url_map.converters['regex'] = RegexConverter
 def hello(req=""):
     if 'bradflaugher' in request.url:
         return render_template('bradflaugher.html'), 200
+    if 'goatse' in request.url:
+        return render_template('goatselearn.html'), 200
     elif 'learn' in request.url:
         return render_template('learn.html'), 200
     elif 'fabbit' in request.url:

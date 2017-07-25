@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='goatse.ico') }}">
     <link rel="canonical" href="http://breadfactorystudios.com/">
     <meta property="og:site_name" content="GoatseLearn">
     <meta property="og:url" content="http://breadfactorystudios.com/goatselearn">
@@ -19,8 +19,7 @@
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
     <!-- Container for Bread-Tron-->
       <div class="container text-center bradtron">
-        <h1 class="myfont">GoatseLearn</h1>
-        <p class="myfont">stretch your backend... it's worth it</p>
+        <img src="{{ url_for('static', filename='goatselearn.png') }}" alt="..." class="img-responsive center-block" />
       </div>
     </div>
     <style>
@@ -42,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" style="font-family:monospace" href="http://breadfactorystudios.com">GoatseLearn</a>
+          <a class="navbar-brand" style="font-family:monospace" href="http://breadfactorystudios.com/goatselearn">GoatseLearn</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
@@ -65,7 +64,7 @@
         <h2 class="myfont">A $17k Javascript bootcamp seems like a waste</h2>
         <h4 class="myfont">We like money, don't you?</h4>
     </div>
-    <img src="http://zapmap.com/wp-content/uploads/2016/01/development-languages-salary.jpg" alt="..." class="img-responsive center-block" />
+    <img src="{{ url_for('static', filename='salary.jpg') }}" alt="..." class="img-responsive center-block" />
     <hr>
 
     <!-- 69% -->
@@ -73,15 +72,15 @@
         <h2 class="myfont">69% of us are self taught</h2>
         <h4 class="myfont">If you can read, you can be too</h4>
     </div>
-    <img src="http://www.tylerdentalcare.com/wp-content/uploads/2016/03/Pie_chart_69-300x266.png" alt="..." class="img-responsive center-block" />
+    <img src="{{ url_for('static', filename='69.png') }}" alt="..." class="img-responsive center-block" />
     <hr>
 
-    <!-- Google -->
+    <!-- syllabus-->
     <div class="container text-center">
-        <h2 class="myfont">We like pretty things too...</h2>
-        <h4 class="myfont">But we like them simple</h4>
+        <h2 class="myfont">We have the syllabus!</h2>
+        <h4 class="myfont">Everything you need to know is there!</h4>
     </div>
-    <img src="https://img.gawkerassets.com/img/18fzf59ga13xhpng/original.png" alt="..." class="img-responsive center-block" />
+    <img src="{{ url_for('static', filename='syllabus.jpg') }}" alt="..." class="img-responsive center-block" />
     <hr>
 
     <!-- What's included -->
@@ -109,18 +108,13 @@
     <hr> 
     <div>
 
-    <!-- it's in the syllabus -->
-    ITS IN THE SYLLABUS GOES HERE!
-    <img src="https://img.gawkerassets.com/img/18fzf59ga13xhpng/original.png" alt="..." class="img-responsive center-block" />
-    <hr>
-
     <!-- FAQ -->
     <div id="FAQ" class="container text-center">
         <h2 class="myfont">FAQ</h2>
         <h3 class="myfont">Q: What is in the syllabus? Who is this for?</h3>
-        <h4 class="myfont">A: The syllabus is structured similar to a very long computer science course, complete with an introduction (VERY IMPORTANT) as well as in depth chapters on important lanuguages, design patters, algorithms, and technologies... CLICK HERE FOR A SAMPLE.</h4>
+        <h4 class="myfont">A: The syllabus is structured similar to a very very very long computer science course, complete with an introduction (VERY IMPORTANT) as well as in depth chapters on important lanuguages, design patters, algorithms, and technologies... It's for anyone who needs to learn anything related to computer science.</h4>
         <h3 class="myfont">Q: How do you make the syllabus?</h3>
-        <h4 class="myfont">A: We scour the internet, interview people, ask questions from teachers and students of popular CS-focused Universities (MIT, CMU, etc...) as well as popular bootcamps (Fullstack, NYCDA, Grand Circus) and compile the best lessons for learning everything that one could and should know about programming and computer science. Including but not limited to tutorials, videos, open source projects, documentation, and sources for sample code, books, and even some movies and fiction if you're into that. </h4>
+        <h4 class="myfont">A: We research and test... we interview people, ask questions from teachers and students of popular CS-focused Universities (MIT, CMU, etc...) as well as popular bootcamps (Fullstack, NYCDA, Grand Circus) and compile the best lessons for learning everything that one could and should know about programming and computer science. Including but not limited to tutorials, videos, open source projects, documentation, and sources for sample code, books, and even some movies and fiction if you're into that. </h4>
         <h3 class="myfont">Q: Why should I pay for a syllabus?</h3>
         <h4 class="myfont">A: It takes time to find good sources, make good projects, and pick good tech.</h4>
         <h3 class="myfont">Q: Is it all backend?</h3>
