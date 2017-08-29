@@ -189,7 +189,7 @@ def get_stock():
 
 ##########################################################
 #   BASEBALL STANDINGS
-#   for getting a stock quote for a certain symbol e.g. "AAPL"
+#   for getting the baseball record of a team e.g "philadelphia"
 #########################################################
 @app.route('/api/v1/getmlbstandings', methods=['GET'])
 def get_mlb_standings():
@@ -236,6 +236,63 @@ def get_mlb_standings():
 
     # set cache for an hour
     cache.set('mlb'+team,json.dumps(return_dictionary),600)
+
+    return json.dumps(return_dictionary)
+
+
+##########################################################
+#   FOOTBALL STANDINGS
+#   for getting the football record of a team e.g "philadelphia"
+#########################################################
+@app.route('/api/v1/getnflstandings', methods=['GET'])
+def get_nfl_standings():
+    # get the values from the query parameters. e.g. mysite.com/api/v1/getmlbstandings?t=philadelphis
+    team = request.args.get('t','philadelphia')
+
+    # pull from cache first
+    saved_stats = cache.get('nfl'+team)
+
+    if saved_stats:
+        return saved_stats.decode('utf-8')
+
+    return_dictionary = {
+        "W":"",
+        "L":"",
+        "T":"",
+        "PF":"",
+        "PA":""
+        }
+
+    user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
+    source_url = 'http://www.cbssports.com/nfl/standings'
+    response = requests.get(source_url, timeout=10, headers={
+        'User-agent': user_agent})
+
+    doc = BeautifulSoup(response.text,'html.parser')
+
+    trs = doc.select('tr')
+
+    columns = ["TEAM","W","L","T","PF","PA"]
+
+    for tr in trs:
+        if team.lower() in str(tr).lower():
+            tds = tr.select('td')
+            w_index = columns.index('W')
+            l_index = columns.index('L')
+            t_index = columns.index('T')
+            pf_index = columns.index('PF')
+            pa_index = columns.index('PA')
+            if len(tds) >= max([w_index,l_index,t_index,pf_index,pa_index]):
+                return_dictionary = {
+                    "W":tds[w_index].getText().strip(),
+                    "L":tds[l_index].getText().strip(),
+                    "T":tds[t_index].getText().strip(),
+                    "PF":tds[pf_index].getText().strip(),
+                    "PA":tds[pa_index].getText().strip()
+                    }
+
+    # set cache for an hour
+    cache.set('nfl'+team,json.dumps(return_dictionary),600)
 
     return json.dumps(return_dictionary)
 
