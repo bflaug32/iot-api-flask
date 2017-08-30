@@ -1,4 +1,4 @@
-# This API key allows your hardware to communicate with the server with a preconfigured passphrase
+#This API key allows your hardware to communicate with the server with a preconfigured passphrase
 # It also can prevent other people from setting your alarm :)
 export MY_API_KEY='sekret'
 
