@@ -203,7 +203,7 @@ def get_mlb_standings():
         return saved_stats.decode('utf-8')
 
     return_dictionary = {
-        "STRK":"",
+        "S":"",
         "W":"",
         "L":"",
         "GB":""}
@@ -231,7 +231,7 @@ def get_mlb_standings():
                     "W":tds[w_index].getText().strip(),
                     "L":tds[l_index].getText().strip(),
                     "GB":tds[gb_index].getText().strip().replace(u'\u00bd','.5'),
-                    "STRK":tds[strk_index].getText().strip()
+                    "S":tds[strk_index].getText().strip()
                     }
 
     # set cache for an hour
@@ -258,9 +258,9 @@ def get_nfl_standings():
     return_dictionary = {
         "W":"",
         "L":"",
-        "T":"",
         "PF":"",
-        "PA":""
+        "PA":"",
+        "S":""
         }
 
     user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
@@ -272,23 +272,23 @@ def get_nfl_standings():
 
     trs = doc.select('tr')
 
-    columns = ["TEAM","W","L","T","PF","PA"]
+    columns = ["TEAM","W","L","T","PCT","PF","PA","HOME","ROAD","DIV","PCT","AFC","PCT","NFC","STREAK"]
 
     for tr in trs:
         if team.lower() in str(tr).lower():
             tds = tr.select('td')
             w_index = columns.index('W')
             l_index = columns.index('L')
-            t_index = columns.index('T')
+            streak_index = columns.index('STREAK')
             pf_index = columns.index('PF')
             pa_index = columns.index('PA')
-            if len(tds) >= max([w_index,l_index,t_index,pf_index,pa_index]):
+            if len(tds) >= max([w_index,l_index,streak_index,pf_index,pa_index]):
                 return_dictionary = {
                     "W":tds[w_index].getText().strip(),
                     "L":tds[l_index].getText().strip(),
-                    "T":tds[t_index].getText().strip(),
                     "PF":tds[pf_index].getText().strip(),
-                    "PA":tds[pa_index].getText().strip()
+                    "PA":tds[pa_index].getText().strip(),
+                    "S":tds[streak_index].getText().strip()
                     }
 
     # set cache for an hour
