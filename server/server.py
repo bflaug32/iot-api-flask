@@ -241,6 +241,112 @@ def get_mlb_standings():
 
 
 ##########################################################
+#   BASKETBALL STANDINGS
+#   for getting the hockey record of a team e.g "philadelphia"
+#########################################################
+@app.route('/api/v1/getnbastandings', methods=['GET'])
+def get_nba_standings():
+    # get the values from the query parameters. e.g. mysite.com/api/v1/getmlbstandings?t=philadelphis
+    team = request.args.get('t','philadelphia')
+
+    # pull from cache first
+    saved_stats = cache.get('nba'+team)
+
+    if saved_stats:
+        return saved_stats.decode('utf-8')
+
+    return_dictionary = {
+        "S":"",
+        "W":"",
+        "GB":"",
+        "L":""}
+
+    user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
+    source_url = 'http://www.cbssports.com/nba/standings'
+    response = requests.get(source_url, timeout=10, headers={
+        'User-agent': user_agent})
+
+    doc = BeautifulSoup(response.text,'html.parser')
+
+    trs = doc.select('tr')
+
+    columns = ["TEAM","W","L","PCT","GB","HOME","ROAD","CONF","DIV","STREAK","L10"]
+
+    for tr in trs:
+        if team.lower() in str(tr).lower():
+            tds = tr.select('td')
+            w_index = columns.index('W')
+            l_index = columns.index('L')
+            gb_index = columns.index('GB')
+            strk_index = columns.index('STREAK')
+            if len(tds) >= max([w_index,l_index,gb_index,strk_index]):
+                return_dictionary = {
+                    "W":tds[w_index].getText().strip(),
+                    "L":tds[l_index].getText().strip(),
+                    "GB":tds[gb_index].getText().strip().replace(u'\u00bd','.5'),
+                    "S":tds[strk_index].getText().strip()
+                    }
+
+    # set cache for an hour
+    cache.set('nba'+team,json.dumps(return_dictionary),600)
+
+    return json.dumps(return_dictionary)
+
+
+##########################################################
+#   HOCKEY STANDINGS
+#   for getting the hockey record of a team e.g "philadelphia"
+#########################################################
+@app.route('/api/v1/getnhlstandings', methods=['GET'])
+def get_nhl_standings():
+    # get the values from the query parameters. e.g. mysite.com/api/v1/getmlbstandings?t=philadelphis
+    team = request.args.get('t','philadelphia')
+
+    # pull from cache first
+    saved_stats = cache.get('nhl'+team)
+
+    if saved_stats:
+        return saved_stats.decode('utf-8')
+
+    return_dictionary = {
+        "S":"",
+        "W":"",
+        "L":"",
+        "OT":""}
+
+    user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
+    source_url = 'http://www.cbssports.com/nhl/standings'
+    response = requests.get(source_url, timeout=10, headers={
+        'User-agent': user_agent})
+
+    doc = BeautifulSoup(response.text,'html.parser')
+
+    trs = doc.select('tr')
+
+    columns = ["TEAM","W","L","OT","PTS","ROW","GF","GA","HOME","ROAD","L10","STREAK"]
+
+    for tr in trs:
+        if team.lower() in str(tr).lower():
+            tds = tr.select('td')
+            w_index = columns.index('W')
+            l_index = columns.index('L')
+            ot_index = columns.index('OT')
+            strk_index = columns.index('STREAK')
+            if len(tds) >= max([w_index,l_index,ot_index,strk_index]):
+                return_dictionary = {
+                    "W":tds[w_index].getText().strip(),
+                    "L":tds[l_index].getText().strip(),
+                    "OT":tds[ot_index].getText().strip(),
+                    "S":tds[strk_index].getText().strip()
+                    }
+
+    # set cache for an hour
+    cache.set('nhl'+team,json.dumps(return_dictionary),600)
+
+    return json.dumps(return_dictionary)
+
+
+##########################################################
 #   FOOTBALL STANDINGS
 #   for getting the football record of a team e.g "philadelphia"
 #########################################################
