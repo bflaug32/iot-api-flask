@@ -1,0 +1,110 @@
+/*Container*/
+
+.emf-container {
+    z-index: 1;
+    position: relative;
+    max-width: 25%;
+    min-width: 21em;
+    padding: 4.5em 3em 3em 3em;
+    background: #ffffff;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: 0.95;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10%;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+.emf-image {
+  display: block;
+  margin: 0 auto;
+  border-radius: 100%;
+  width: 200px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+
+h1 {
+    font-size: 1.85em;
+    letter-spacing: 0.22em;
+    margin: 0 0 0.525em 0;
+    padding-top: 0.85em;
+    text-transform: uppercase;
+    text-shadow: 0 5px 13px rgba(0,0,0,.5);
+}
+
+/*Icons*/
+.icons {
+  padding: inherit;
+}
+.inline-block {
+  display: inline-block;
+  text-transform: none;
+  list-style: none;
+  padding: 10px;
+}
+.fa-github {
+  color: grey;
+}
+.fa-github:hover {
+  color: #ff7496;
+}
+.fa-link{
+  color: grey;
+}
+.fa-link:hover {
+  color: #ff7496;
+}
+.fa-linkedin {
+  color: grey;
+}
+.fa-linkedin:hover {
+  color: #ff7496;
+}
+.fa-twitter {
+  color: grey;
+}
+.fa-twitter:hover {
+  color: #ff7496;
+}
+.fa-facebook {
+  color: grey;
+}
+.fa-facebook:hover {
+  color: #ff7496;
+}
+.fa-instagram {
+  color: grey;
+}
+.fa-instagram:hover {
+  color: #ff7496;
+}
+.fa-envelope-o {
+  color: grey;
+}
+.fa-envelope-o:hover {
+  color: #ff7496;
+}
+
+/*Responsive*/
+@media screen and (max-width: 480px) {
+  html, body {
+    min-width: 320px;
+  }
+}
+@media screen and (max-width: 1680px) {
+  body {
+    font-size: 11pt;
+  }
+}
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 10pt;
+    line-height: 1.75;
+    /*margin-top: 5px;*/
+  }
+}
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.65em;
+  }
+}

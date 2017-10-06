@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Elyse Flaugher</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+    <script src="https://use.fontawesome.com/723fecc44e.js"></script>
+  </head>
+  <body>
+    <style>
+        body {
+          font-family: 'Source Sans Pro', sans-serif;
+          background-image: url("{{ url_for('static', filename='marble.jpg') }}");
+        }
+    </style>
+    <div class="emf-container">
+        <img class="emf-image" src="{{ url_for('static', filename='elyse.jpg') }}" alt="Picture of Elyse Flaugher">
+      <h1>Elyse Flaugher</h1>
+      <h3>Front-End Developer</h3>
+        <div class="emf-icons">
+          <ul class="icons">
+            <li class="inline-block">
+              <a href="https://github.com/emflaugh">
+                <i class="fa fa-lg fa-github" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="inline-block">
+              <a href="http://breadfactorystudios.com/">
+                <i class="fa fa-link" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="inline-block">
+              <a href="https://www.linkedin.com/in/elyseflaugher">
+                <i class="fa fa-lg fa-linkedin" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="inline-block">
+              <a href="https://www.instagram.com/emflaugh">
+                <i class="fa fa-lg fa-instagram" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="inline-block">
+              <a href="https://www.facebook.com/elyse.flaugher">
+                <i class="fa fa-lg fa-facebook" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="inline-block">
+              <a href="mailto:elyseflaugher@gmail.com">
+                <i class="fa fa-lg fa-envelope-o"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </body>
+</html>

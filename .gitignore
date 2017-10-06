@@ -4,3 +4,4 @@ env
 .DS_Store
 secretconfig.sh
 deploy.zip
+deployment.zip
