@@ -8,4 +8,5 @@ cd /src
 memcached -u root &
 
 # run the server
-python server.py
+gunicorn server:app -w 4 -b 0.0.0.0:5000
+

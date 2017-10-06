@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from werkzeug.routing import BaseConverter
 
 from flask import Flask, request, render_template, url_for
+from flask_cors import CORS
 from pymemcache.client.base import Client as MemcachedClient
 
 
@@ -18,6 +19,7 @@ from pymemcache.client.base import Client as MemcachedClient
 ##########################################################
 
 app = Flask(__name__)
+CORS(app)
 cache = MemcachedClient(('localhost',11211))
 api_key = os.environ['MY_API_KEY']
 open_weather_api_key = os.environ['OPEN_WEATHER_API_KEY']
@@ -420,13 +422,3 @@ def set_temperature():
 def get_temperature():
     # get the values from the query parameters. e.g. mysite.com/api/v1/set-alarm?h=6&m=30
     return cache.get('temp')
-
-
-##########################################################
-#   MAIN
-#   don't edit this unless you know what you're doing :)
-##########################################################
-
-# The "main" function, to run the server
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
