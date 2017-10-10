@@ -65,7 +65,7 @@ void loop() {
     }
 
     // MAKE THE REQUEST (different one each time)
-    if (loop_count % 3 == 0){
+    if (loop_count % 4 == 0){
       client.print("GET ");
       client.print("/api/v1/getstockquote?s=SPLV");
       client.println(" HTTP/1.1");
@@ -74,7 +74,16 @@ void loop() {
       client.println("Connection: close");
       client.println();
     }
-    else if (loop_count % 3 == 1){    
+    else if (loop_count % 4 == 1){    
+      client.print("GET ");
+      client.print("/api/v1/getstockquote?s=XLK");
+      client.println(" HTTP/1.1");
+      client.print("Host: ");
+      client.println(APIserver);
+      client.println("Connection: close");
+      client.println();
+    }
+    else if (loop_count % 4 == 2){    
       client.print("GET ");
       client.print("/api/v1/getforecastzip?q=19147");
       client.println(" HTTP/1.1");
@@ -85,7 +94,7 @@ void loop() {
     }
     else{
       client.print("GET ");
-      client.print("/api/v1/getmlbstandings?s=philadelphia");
+      client.print("/api/v1/getnflstandings?t=philadelphia");
       client.println(" HTTP/1.1");
       client.print("Host: ");
       client.println(APIserver);
