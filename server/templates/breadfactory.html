@@ -1,143 +1,135 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Bread Factory Studios</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="canonical" href="http://breadfactorystudios.com/">
-    <meta property="og:site_name" content="Bread Factory Studios">
-    <meta property="og:url" content="http://breadfactorystudios.com/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:url" content="http://breadfactorystudios.com/">
-    <meta name="twitter:card" content="summary">
-    <meta name="description" content="">
-</head>
-<body id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
-    <!-- Container for Bread-Tron-->
-      <div class="container text-center bradtron">
-        <p style="font-family: Courier New, Courier, monospace">
-        &nbsp;&nbsp;&nbsp;&nbsp;_______ <br>
-        &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
-        &nbsp;&nbsp;/_____&nbsp;&nbsp;&nbsp;|<br>
-        &nbsp;(&nbsp;&nbsp;'&nbsp;&nbsp;&nbsp;)&nbsp;/ <br>
-        &nbsp;&nbsp;|.&nbsp;&nbsp;'|&nbsp;/  <br>
-        &nbsp;&nbsp;|____|/   <br>
-        </p>
-      </div>
-    </div>
-    <style>
-    .bradtron {
-       margin-top: 50px;   
-       letter-spacing: 0px;
-    }
-    </style>
-
-    <!--Nav Bar-->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" style="font-family:monospace" href="http://breadfactorystudios.com">bread factory studios</a>
+    <head>
+        <title>Bread Factory Studios</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="canonical" href="http://breadfactorystudios.com/">
+        <meta property="og:site_name" content="Bread Factory Studios">
+        <meta property="og:url" content="http://breadfactorystudios.com/">
+        <meta property="og:type" content="website">
+        <meta name="twitter:url" content="http://breadfactorystudios.com/">
+        <meta name="twitter:card" content="summary">
+        <meta name="description" content="">
+    </head>
+    <body id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
+        <!-- Container for Bread-Tron-->
+        <div class="container text-center bradtron">
+            <p style="font-family: Courier New, Courier, monospace">
+            &nbsp;&nbsp;&nbsp;&nbsp;_______ <br>
+            &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+            &nbsp;&nbsp;/_____&nbsp;&nbsp;&nbsp;|<br>
+            &nbsp;(&nbsp;&nbsp;'&nbsp;&nbsp;&nbsp;)&nbsp;/ <br>
+            &nbsp;&nbsp;|.&nbsp;&nbsp;'|&nbsp;/  <br>
+            &nbsp;&nbsp;|____|/   <br>
+            </p>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://breadfactorystudios.com/" style="font-family: monospace"><span class="glyphicon glyphicon-briefcase white"></span> HIRE US</a></li>
-              </ul>
-            </li>
-          </ul>
         </div>
-      </div>
-    </nav>
-    <style>
-    .white, .white a {
-          color: #fff;
-    }
-    </style>
+        <style>
+.bradtron {
+    margin-top: 50px;   
+    letter-spacing: 0px;
+}
+        </style>
 
-
-
-    <!--Team -->
-    <div id="team" class="container text-center">
-        <h2 style="font-family: monospace"><strong>team</strong></h2>
-
-        <div class="row">
-            <div class="col-sm-4">
-              <h4 style="font-family: monospace"><strong>Brad</strong></h4>
-              <img src="{{ url_for('static', filename='Brad.png') }}" class="img-circle person" alt="Brad" width="200" height="200">
-              <br>          
-              <div style="font-family: monospace" >
-                <p>Backend, Big Data, DevOps, Linux, Android, Electronics</p>
-                  <p><a href="https://github.com/predbrad">Github</a>, <a href="https://www.linkedin.com/in/bradflaugher/">LinkedIn</a>, <a href="https://angel.co/brad-flaugher">AngelList</a>, <a target="_blank" href="mailto:brad@breadfactorystudios.com">email</a></p>
-               </div>
-            </div>
-            <div class="col-sm-4">
-                <h4 style="font-family: monospace"><strong>Elyse</strong></h4>
-                <img src="{{ url_for('static', filename='Elyse.png') }}" class="img-circle person" alt="Elyse" width="200" height="200">
-                <br>          
-                <div style="font-family: monospace" >
-                    <p>Mobile Web, Frontend, Design</p>
-                    <p><a href="https://github.com/emflaugh">Github</a>, <a href="https://www.linkedin.com/in/elyse-flaugher-0816ba83/">LinkedIn</a>, <a target="_blank" href="mailto:elyseflaugher@gmail.com">email</a></p>
+        <!--Nav Bar-->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="font-family:monospace" href="http://breadfactorystudios.com">bread factory studios</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="http://breadfactorystudios.com/" style="font-family: monospace"><span class="glyphicon glyphicon-briefcase white"></span> HIRE US</a></li>
+                    </ul>
+                    </li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <h4 style="font-family: monospace"><strong>Scott</strong></h4>
-                <img src="{{ url_for('static', filename='Scott.png') }}" class="img-circle person" alt="Scott" width="200" height="200">
-                <br>          
-                <div style="font-family: monospace" >
-                    <p>iOS, Android, Geo, Polygons, Mobile Backend</p>
-                    <p><a href="https://github.com/SMesser55">Github</a>, <a href="https://www.linkedin.com/in/scott-messer/">LinkedIn</a>, <a target="_blank" href="mailto:scott.messer55@gmail.com">email</a></p>
+        </nav>
+        <style>
+.white, .white a {
+    color: #fff;
+}
+        </style>
+
+
+
+        <!--Team -->
+        <div id="team" class="container text-center">
+            <h2 style="font-family: monospace"><strong>team</strong></h2>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4 style="font-family: monospace"><strong>Brad</strong></h4>
+                    <img src="{{ url_for('static', filename='Brad.png') }}" class="img-circle person" alt="Brad" width="200" height="200">
+                    <br>          
+                    <div style="font-family: monospace" >
+                        <p>Data, DevOps, Linux, Android, Internet Of Things</p>
+                        <p><a href="https://github.com/predbrad">Github</a>, <a href="https://www.linkedin.com/in/bradflaugher/">LinkedIn</a>, <a href="https://angel.co/brad-flaugher">AngelList</a>, <a target="_blank" href="mailto:brad@breadfactorystudios.com">email</a></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h4 style="font-family: monospace"><strong>Elyse</strong></h4>
+                    <img src="{{ url_for('static', filename='Elyse.png') }}" class="img-circle person" alt="Elyse" width="200" height="200">
+                    <br>          
+                    <div style="font-family: monospace" >
+                        <p>Full-Stack Web Developer</p>
+                        <p><a href="https://github.com/emflaugh">Github</a>, <a href="https://www.linkedin.com/in/elyse-flaugher-0816ba83/">LinkedIn</a>, <a target="_blank" href="mailto:elyseflaugher@gmail.com">email</a></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h4 style="font-family: monospace"><strong>Scott</strong></h4>
+                    <img src="{{ url_for('static', filename='Scott.png') }}" class="img-circle person" alt="Scott" width="200" height="200">
+                    <br>          
+                    <div style="font-family: monospace" >
+                        <p>Full-Stack Mobile App Developer</p>
+                        <p><a href="https://github.com/SMesser55">Github</a>, <a href="https://www.linkedin.com/in/scott-messer/">LinkedIn</a>, <a target="_blank" href="mailto:scott.messer55@gmail.com">email</a></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <style>
-    .person {
-        border: 10px solid transparent;
-        margin-bottom: 25px;
-    }
-    </style>
+        <style>
+.person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+}
+        </style>
 
-    <!--Work-->
-    <div id="work" class="container text-center">
-        <h2 style="font-family: monospace"><strong>what we do</strong></h2>
-        <div style="font-family: monospace">
-          <div class="row">
-              <div class="col-sm-6">
-                <h3>we do huge data</h3>
-                happy customers include <a target="_blank" href="http://audigent.com/">AuDigent</a> and <a target="_blank" href="http://www.startribune.com/redcurrent-app-aims-to-streamline-calendars/291898351/">RedCurrent</a>
-              </div>
-              <div class="col-sm-6">
-                <h3>we make websites and apps</h3>
-                like <a target="_blank" href="http://cuemeapp.com/">CueMe</a> and <a target="_blank" href="http://venturebeat.com/2014/03/06/offline-magazine-opens-up-its-slick-ios-platform-to-publishers-starting-with-brooklyn-magazine/">Offline Publishing</a>, <a target="_blank" href="http://time.com/4149938/donald-trump-keyboard-imoji-emoji/">Imoji Keyboards</a> but also <a target="_blank" href="https://github.com/predbrad/ios-space-shooter">6014</a>, <a target="_blank" href="https://itunes.apple.com/bt/app/save-the-penguin-shark-attack/id1067171149?mt=8">Save The Penguin</a>
-              </div>
-              <div class="col-sm-6">
-                <h3>we do internet of things</h3>
-                <a target="_blank" href="http://fabbit.io">FabBit</a>, <a target="_blank" href="http://www.bluedragonbio.com/">Blue Dragon Bio</a>, <a target="_blank" href="https://powti.com/">POWTI</a>
-              </div>
-              <div class="col-sm-6">
-                <h3>we contribute</h3>
-                <a target="_blank" href="https://www.meetup.com/en-AU/Philly-Polyglot-Programmers-Platoon/">classes and happy hours</a>
-              </div>
+        <!--Work-->
+        <div id="work" class="container text-center">
+            <h2 style="font-family: monospace"><strong>what we do</strong></h2>
+            <div style="font-family: monospace">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>we make websites and apps</h3>
+                        <a target="_blank" href="http://cuemeapp.com/">CueMe</a>, <a target="_blank" href="http://venturebeat.com/2014/03/06/offline-magazine-opens-up-its-slick-ios-platform-to-publishers-starting-with-brooklyn-magazine/">Offline Publishing</a>, <a target="_blank" href="http://time.com/4149938/donald-trump-keyboard-imoji-emoji/">Imoji Keyboards</a>, <a target="_blank" href="https://itunes.apple.com/bt/app/save-the-penguin-shark-attack/id1067171149?mt=8">Save The Penguin</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>we do internet of things</h3>
+                        <a target="_blank" href="http://fabbit.io">FabBit</a>, <a target="_blank" href="http://www.bluedragonbio.com/">Blue Dragon Bio</a>, <a target="_blank" href="https://powti.com/">POWTI</a>, <a target="_blank" href="http://halasystems.com/">Hala</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-        
-    <!--Hire-->
-    <div id="hire" class="container text-center">
-        <h2 style="font-family: monospace"><strong>hire us</strong></h2>
-        <div style="font-family: monospace">
-            email <a target="_blank" href="mailto:brad@breadfactorystudios.com">brad@breadfactorystudios.com</a> and we'll see what we can do.
-        </div>
-        <br>
-    </div>
 
-</body>
+        <!--Hire-->
+        <div id="hire" class="container text-center">
+            <h2 style="font-family: monospace"><strong>hire us</strong></h2>
+            <div style="font-family: monospace">
+                email <a target="_blank" href="mailto:brad@breadfactorystudios.com">brad@breadfactorystudios.com</a> and we'll see what we can do.
+            </div>
+            <br>
+        </div>
+
+    </body>
 </html>
