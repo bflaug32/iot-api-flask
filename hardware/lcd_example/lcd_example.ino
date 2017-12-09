@@ -29,8 +29,8 @@
 
 /* User Settings
 *********************/ 
-const char* ssid = "825_carpenter";      //  your network SSID (case sensitive)
-const char* pass = "ladylady";   // your network password (case sensitive)
+const char* ssid = "olivers_house";      //  your network SSID (case sensitive)
+const char* pass = "catcatcat";   // your network password (case sensitive)
 const char* APIserver = "api.fabbit.io";
 
 
